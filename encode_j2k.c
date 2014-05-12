@@ -77,6 +77,7 @@ int main(int argc, const char *argv[]) {
   }
   
   av_register_all();
+  av_log_set_level(AV_LOG_DEBUG);
   
   src_filename = argv[1];
   dst_filename = argv[2];
@@ -117,6 +118,7 @@ int main(int argc, const char *argv[]) {
     // make ffmpeg not complain about j2k being experiemntal
     video_enc_ctx->strict_std_compliance = -2;
     
+//     printf("About to open encoder\n");
     if (avcodec_open2(video_enc_ctx, codec_enc, NULL) < 0) {
         fprintf(stderr, "Could not open codec\n");
         exit(1);
